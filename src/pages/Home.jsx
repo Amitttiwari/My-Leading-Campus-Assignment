@@ -11,6 +11,7 @@ const Home = () => {
   const [history, setHistory] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('questionSessions') || '[]');
