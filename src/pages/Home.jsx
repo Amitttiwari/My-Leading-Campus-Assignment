@@ -24,30 +24,43 @@ const Home = () => {
   };
 
   const handleGenerate = async () => {
+    setLoading(true);
+  
     const prompt = `Generate 5 two-mark and 10 one-mark questions from this content:\n${inputText}`;
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+  
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Authorization': 'Bearer YOUR_API_KEY',
-        'Content-Type': 'application/json'
+        "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://your-vercel-site.vercel.app", // optional but recommended
+        "X-Title": "AI Question Generator"
       },
       body: JSON.stringify({
-        model: 'openai/gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }]
+        model: "openai/gpt-3.5-turbo",  // or try "mistralai/mistral-7b-instruct"
+        messages: [
+          {
+            role: "user",
+            content: prompt
+          }
+        ]
       })
     });
+  
     const data = await res.json();
-    const content = data.choices[0].message.content;
+    const content = data.choices?.[0]?.message?.content || "";
     const parsed = content.split(/\n(?=\d+\.)/).filter(Boolean);
+  
     setQuestions(parsed);
-    const session = {
-      title: inputText.slice(0, 30) + '...',
+    saveToHistory({
+      title: inputText.slice(0, 30) + "...",
       content: parsed,
       date: new Date().toLocaleString()
-    };
-    saveToHistory(session);
+    });
+  
+    setLoading(false);
   };
-
+  
   const handlePDFUpload = async (e) => {
     const file = e.target.files[0];
     if (file && file.type === 'application/pdf') {
