@@ -8,6 +8,7 @@ export default defineConfig({
     open: true
   },
   build: {
-    chunkSizeWarningLimit: 1000, // increase to 1000 KB or more
+    chunkSizeWarningLimit: 1000,
+    outDir: 'dist', // increase to 1000 KB or more
   },
 });
