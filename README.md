@@ -82,4 +82,4 @@ Generate 5 two-mark and 10 one-mark questions from this content:
 ---
 
 ## 🌐 Live Version 
-[https://my-leading-campus-assignment-evo2vn08w-amitttiwaris-projects.vercel.app]
+https://my-leading-campus-assignment-qbyu8t3n8-amitttiwaris-projects.vercel.app/
