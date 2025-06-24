@@ -38,7 +38,7 @@ const Home = () => {
         "X-Title": "AI Question Generator"
       },
       body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",  // or try "mistralai/mistral-7b-instruct"
+        model: "mistralai/mistral-small-3.2-24b-instruct-2506:free",  // or try "mistralai/mistral-7b-instruct"
         messages: [
           {
             role: "user",
@@ -58,6 +58,9 @@ const Home = () => {
       content: parsed,
       date: new Date().toLocaleString()
     });
+
+    console.log("API Key:", import.meta.env.VITE_OPENROUTER_API_KEY);
+
   
     setLoading(false);
   };
