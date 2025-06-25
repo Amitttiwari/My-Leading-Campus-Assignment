@@ -38,7 +38,7 @@ const Home = () => {
         "X-Title": "AI Question Generator"
       },
       body: JSON.stringify({
-        model: "mistralai/mistral-small-3.2-24b-instruct-2506:free",  // or try "mistralai/mistral-7b-instruct"
+        model: "deepseek/deepseek-chat-v3-0324:free",  // or try "mistralai/mistral-7b-instruct"
         messages: [
           {
             role: "user",

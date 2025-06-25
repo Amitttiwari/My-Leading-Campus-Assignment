@@ -4,7 +4,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =  `/lib/pdf.worker.min.mjs`;
 const extractPDFText = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
   const typedArray = new Uint8Array(arrayBuffer);
-  const pdf = await pdfjsLib.getDocument(typedArray).promise;
+  const pdf = await pdfjsLib.getDocument(typedArray).promise; // ← this is invalid
+
 
   let fullText = '';
   for (let i = 1; i <= pdf.numPages; i++) {
