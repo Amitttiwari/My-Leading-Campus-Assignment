@@ -1,5 +1,9 @@
-import * as pdfjsLib from 'pdfjs-dist/build/pdf';
-pdfjsLib.GlobalWorkerOptions.workerSrc =  `/lib/pdf.worker.min.mjs`;
+import * as pdfjsLib from 'pdfjs-dist/webpack';
+import { GlobalWorkerOptions } from 'pdfjs-dist/build/pdf';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+GlobalWorkerOptions.workerSrc = pdfWorker;
+
 
 const extractPDFText = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
