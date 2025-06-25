@@ -34,7 +34,7 @@ const Home = () => {
       headers: {
         "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://your-vercel-site.vercel.app", // optional but recommended
+        //"HTTP-Referer": "https://your-vercel-site.vercel.app", // optional but recommended
         "X-Title": "AI Question Generator"
       },
       body: JSON.stringify({
@@ -59,8 +59,7 @@ const Home = () => {
       date: new Date().toLocaleString()
     });
 
-    console.log("API Key:", import.meta.env.VITE_OPENROUTER_API_KEY);
-
+    console.log("Auth Header Present:", !!import.meta.env.VITE_OPENROUTER_API_KEY);
   
     setLoading(false);
   };
