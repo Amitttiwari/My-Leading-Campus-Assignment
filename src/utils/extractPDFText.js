@@ -1,8 +1,7 @@
 import * as pdfjsLib from 'pdfjs-dist/webpack';
 import { GlobalWorkerOptions } from 'pdfjs-dist/build/pdf';
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.entry';
 
-GlobalWorkerOptions.workerSrc = pdfWorker;
+GlobalWorkerOptions.workerSrc = pdfjsLib.GlobalWorkerOptions.workerSrc;
 
 
 const extractPDFText = async (file) => {
